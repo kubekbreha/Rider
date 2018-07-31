@@ -1,6 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 
 public class RiderController : MonoBehaviour {
 
@@ -12,8 +14,15 @@ public class RiderController : MonoBehaviour {
     private bool isMovingBackward= false;
     private bool isGrounded = false;
 
-	
-	// Update is called once per frame
+    public GameObject pauseButton;
+    public GameObject pausePanel;
+
+    private void Start()
+    {
+        pausePanel.SetActive(false);
+    }
+
+    // Update is called once per frame
     private void Update () {
 
         //moving backward
@@ -54,10 +63,28 @@ public class RiderController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
+        Debug.Log(collision.collider.ToString());
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
     }
+
+    public void RestartGame()
+    {
+    }
+
+    public void PauseGame()
+    {
+        pauseButton.SetActive(false);
+        pausePanel.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
+        pauseButton.SetActive(true);
+    }
+
 }
