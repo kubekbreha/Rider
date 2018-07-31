@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LinePurple
+  m_Name: LineAqua
   m_Shader: {fileID: 4800000, guid: 3e6c1776342300545976f0ad6a86ef1b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
@@ -91,10 +91,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.5424528, b: 0.8998404, a: 1}
+    - _Color: {r: 0.2028302, g: 1, b: 0.9161481, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _MKGlowColor: {r: 0.9716981, g: 0.46293163, b: 0.86032635, a: 1}
-    - _MKGlowTexColor: {r: 1, g: 0.3537736, b: 0.8585375, a: 1}
+    - _MKGlowColor: {r: 0.20392157, g: 1, b: 0.91764706, a: 1}
+    - _MKGlowTexColor: {r: 0.43529412, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.14796188, g: 0.8962264, b: 0.8888995, a: 1}
