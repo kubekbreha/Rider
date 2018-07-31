@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour {
         newPos.z = transform.position.z;
 
         transform.position = newPos;
-
 	}
 
 }
