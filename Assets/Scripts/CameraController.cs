@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Create by Kubo Brehuv 31.7.2018
+ */
 public class CameraController : MonoBehaviour {
 
     public Transform target;

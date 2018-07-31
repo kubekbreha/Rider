@@ -3,12 +3,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-
+/*
+ * Create by Kubo Brehuv 31.7.2018
+ */
 public class RiderController : MonoBehaviour {
 
-    public Rigidbody2D rbRider;
+    public GameObject rider;
     public float speed = 20.0f;
     public float rotationSpeed = 2.5f;
+
+    private Rigidbody2D rbRider;
+    private Vector3 originalRiderTrans;
 
     private bool isMovingForward = false;
     private bool isMovingBackward= false;
@@ -21,6 +26,8 @@ public class RiderController : MonoBehaviour {
     private void Start()
     {
         pausePanel.SetActive(false);
+        originalRiderTrans = rider.transform.position;
+        rbRider = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -76,6 +83,12 @@ public class RiderController : MonoBehaviour {
 
     public void RestartGame()
     {
+        pauseButton.SetActive(true);
+        pausePanel.SetActive(false);
+        rbRider.velocity = Vector3.zero;
+        rider.transform.position = originalRiderTrans;
+        Time.timeScale = 1.0f;  
+        gamePaused = false;
     }
 
     public void PauseGame()
