@@ -22,10 +22,12 @@ public class RiderController : MonoBehaviour {
 
     public GameObject pauseButton;
     public GameObject pausePanel;
+    public GameObject failedPanel;
 
     private void Start()
     {
         pausePanel.SetActive(false);
+        failedPanel.SetActive(false);
         originalRiderTrans = rider.transform.position;
         rbRider = GetComponent<Rigidbody2D>();
     }
@@ -44,7 +46,12 @@ public class RiderController : MonoBehaviour {
             isMovingForward = true;
         if (Input.GetMouseButtonUp(1))
             isMovingForward = false;
+
+        if (CheckIfDead()) 
+            PlayerFailed();
+        
 	}
+
 
     private void FixedUpdate()
     {
@@ -70,26 +77,39 @@ public class RiderController : MonoBehaviour {
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
         Debug.Log(collision.collider.ToString());
     }
 
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
     }
 
+
+    private bool CheckIfDead(){
+        if(rider.transform.position.y < -20)
+            return true;
+        return false;
+    }
+
+
     public void RestartGame()
     {
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
+        failedPanel.SetActive(false);
         rbRider.velocity = Vector3.zero;
+        rbRider.rotation = 0f;
         rider.transform.position = originalRiderTrans;
         Time.timeScale = 1.0f;  
         gamePaused = false;
     }
+
 
     public void PauseGame()
     {
@@ -99,12 +119,20 @@ public class RiderController : MonoBehaviour {
         pausePanel.SetActive(true);
     }
 
-    public void ResumeGame()
+
+    public void ResumeGame() 
     {
         Time.timeScale = 1.0f;  
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
         gamePaused = false;
+    }
+
+    public void PlayerFailed(){
+        Time.timeScale = 0.0f;
+        gamePaused = true;
+        pauseButton.SetActive(false);
+        failedPanel.SetActive(true);
     }
 
 }
