@@ -13,6 +13,7 @@ public class RiderController : MonoBehaviour {
     private bool isMovingForward = false;
     private bool isMovingBackward= false;
     private bool isGrounded = false;
+    private bool gamePaused = false; 
 
     public GameObject pauseButton;
     public GameObject pausePanel;
@@ -36,28 +37,30 @@ public class RiderController : MonoBehaviour {
             isMovingForward = true;
         if (Input.GetMouseButtonUp(1))
             isMovingForward = false;
-        
 	}
 
     private void FixedUpdate()
     {
-        //moving backward
-        if (isMovingBackward)
+        if (!gamePaused)
         {
-            if (isGrounded)
-                rbRider.AddForce(-1 * transform.right * speed * Time.fixedDeltaTime * 100.0f, ForceMode2D.Force);
-            else
-                rbRider.AddTorque(-1 * rotationSpeed * Time.fixedDeltaTime * 20.0f, ForceMode2D.Force);
-        }
+            //moving backward
+            if (isMovingBackward)
+            {
+                if (isGrounded)
+                    rbRider.AddForce(-1 * transform.right * speed * Time.fixedDeltaTime * 100.0f, ForceMode2D.Force);
+                else
+                    rbRider.AddTorque(-1 * rotationSpeed * Time.fixedDeltaTime * 20.0f, ForceMode2D.Force);
+            }
 
-        //moving forward
-        if(isMovingForward){
-            if (isGrounded)
-                rbRider.AddForce(transform.right * speed * Time.fixedDeltaTime * 100.0f, ForceMode2D.Force);
-            else
-                rbRider.AddTorque( rotationSpeed * Time.fixedDeltaTime * 20.0f, ForceMode2D.Force);
+            //moving forward
+            if (isMovingForward)
+            {
+                if (isGrounded)
+                    rbRider.AddForce(transform.right * speed * Time.fixedDeltaTime * 100.0f, ForceMode2D.Force);
+                else
+                    rbRider.AddTorque(rotationSpeed * Time.fixedDeltaTime * 20.0f, ForceMode2D.Force);
+            }
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -77,14 +80,18 @@ public class RiderController : MonoBehaviour {
 
     public void PauseGame()
     {
+        Time.timeScale = 0.0f;  
+        gamePaused = true;
         pauseButton.SetActive(false);
         pausePanel.SetActive(true);
     }
 
     public void ResumeGame()
     {
+        Time.timeScale = 1.0f;  
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
+        gamePaused = false;
     }
 
 }
