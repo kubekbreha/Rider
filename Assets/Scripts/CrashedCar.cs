@@ -6,7 +6,12 @@ public class CrashedCar : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.parent.GetComponent<RiderController>().ChildCollisionDetected(this);
+        transform.parent.GetComponent<RiderController>().RoofOfCarCollisionEnter(this);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        transform.parent.GetComponent<RiderController>().RoofOfCarCollisionExit(this);
     }
 
 }

@@ -18,7 +18,7 @@ public class RiderController : MonoBehaviour {
     private bool isMovingForward = false;
     private bool isMovingBackward= false;
     private bool isGrounded = false;
-    private bool gamePaused = false; 
+    private bool cantMove = false; 
 
     public GameObject pauseButton;
     public GameObject pausePanel;
@@ -55,7 +55,7 @@ public class RiderController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!gamePaused)
+        if (!cantMove)
         {
             //moving backward
             if (isMovingBackward)
@@ -90,9 +90,15 @@ public class RiderController : MonoBehaviour {
     }
 
 
-    public void ChildCollisionDetected(CrashedCar crashedCar)
+    public void RoofOfCarCollisionEnter(CrashedCar crashedCar)
     {
-        Invoke("PlayerFailed", 2);
+        cantMove = true;
+        Invoke("CarFallOnRoof", 4);
+    } 
+
+    public void RoofOfCarCollisionExit(CrashedCar crashedCar)
+    {
+        cantMove = false;
     } 
 
     private bool CheckIfDead(){
@@ -111,14 +117,14 @@ public class RiderController : MonoBehaviour {
         rbRider.rotation = 0f;
         rider.transform.position = originalRiderTrans;
         Time.timeScale = 1.0f;  
-        gamePaused = false;
+        cantMove = false;
     }
 
 
     public void PauseGame()
     {
         Time.timeScale = 0.0f;  
-        gamePaused = true;
+        cantMove = true;
         pauseButton.SetActive(false);
         pausePanel.SetActive(true);
     }
@@ -129,15 +135,25 @@ public class RiderController : MonoBehaviour {
         Time.timeScale = 1.0f;  
         pausePanel.SetActive(false);
         pauseButton.SetActive(true);
-        gamePaused = false;
+        cantMove = false;
     }
 
     public void PlayerFailed(){
         Time.timeScale = 0.0f;
-        gamePaused = true;
+        cantMove = true;
         pauseButton.SetActive(false);
         failedPanel.SetActive(true);
     }
 
+
+    public void CarFallOnRoof()
+    {
+        if (cantMove)
+        {
+            Time.timeScale = 0.0f;
+            pauseButton.SetActive(false);
+            failedPanel.SetActive(true);
+        }
+    }
 
 }
