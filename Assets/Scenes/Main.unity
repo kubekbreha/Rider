@@ -860,6 +860,7 @@ MonoBehaviour:
   pauseButton: {fileID: 1751127056}
   pausePanel: {fileID: 1282937039}
   failedPanel: {fileID: 754552326}
+  scoreText: {fileID: 761062552}
 --- !u!1 &640456383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,6 +1893,7 @@ MonoBehaviour:
   - {fileID: 640456383}
   - {fileID: 1811829276}
   - {fileID: 1039670519}
+  riderPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1614293078
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class RiderController : MonoBehaviour {
     private bool isMovingBackward= false;
     private bool isGrounded = false;
     private bool cantMove = false;
-    private int scoreMeters;
+    private float scoreMeters;
 
     public GameObject pauseButton;
     public GameObject pausePanel;
@@ -38,6 +38,8 @@ public class RiderController : MonoBehaviour {
     // Update is called once per frame
     private void Update () {
 
+        scoreMeters = rider.transform.position.x - originalRiderTrans.x;
+
         //moving backward
         if (Input.GetMouseButtonDown(0))
             isMovingBackward = true;
@@ -53,7 +55,7 @@ public class RiderController : MonoBehaviour {
         if (CheckIfDead()) 
             PlayerFailed();
 
-        scoreText.text = scoreMeters + " m";
+        scoreText.text = (int)scoreMeters + " m";
 	}
 
 
