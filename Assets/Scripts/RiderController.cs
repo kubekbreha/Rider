@@ -81,7 +81,6 @@ public class RiderController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
-        Debug.Log(collision.collider.ToString());
     }
 
 
@@ -90,6 +89,11 @@ public class RiderController : MonoBehaviour {
         isGrounded = false;
     }
 
+
+    public void ChildCollisionDetected(CrashedCar crashedCar)
+    {
+        Invoke("PlayerFailed", 2);
+    } 
 
     private bool CheckIfDead(){
         if(rider.transform.position.y < -20)
@@ -134,5 +138,6 @@ public class RiderController : MonoBehaviour {
         pauseButton.SetActive(false);
         failedPanel.SetActive(true);
     }
+
 
 }
