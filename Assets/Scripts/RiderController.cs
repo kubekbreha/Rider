@@ -18,11 +18,14 @@ public class RiderController : MonoBehaviour {
     private bool isMovingForward = false;
     private bool isMovingBackward= false;
     private bool isGrounded = false;
-    private bool cantMove = false; 
+    private bool cantMove = false;
+    private int scoreMeters;
 
     public GameObject pauseButton;
     public GameObject pausePanel;
     public GameObject failedPanel;
+
+    public Text scoreText;
 
     private void Start()
     {
@@ -49,7 +52,8 @@ public class RiderController : MonoBehaviour {
 
         if (CheckIfDead()) 
             PlayerFailed();
-        
+
+        scoreText.text = scoreMeters + " m";
 	}
 
 
