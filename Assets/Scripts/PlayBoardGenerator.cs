@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Create by Kubo Brehuv 1.8.2018
+ */
 public class PlayBoardGenerator : MonoBehaviour {
     
     public GameObject[] linesArray;
     public GameObject rider;
 
+    private Vector3[] setupLinesPositions;
     private Vector3 riderPosition;
     private int moveForwardDistance = 20;
     private int moveLineIndex = 0;
 
-	// Use this for initialization
 	void Start () {
+        setupLinesPositions = new Vector3[linesArray.Length];
+
+        for (int i = 0; i < linesArray.Length; i++){
+            setupLinesPositions[i] = linesArray[i].transform.position;
+        }
 	}
 	
-	// Update is called once per frame
 	void Update () {
         riderPosition = rider.transform.position;
 
@@ -35,7 +42,15 @@ public class PlayBoardGenerator : MonoBehaviour {
                                                                    linesArray[moveLineIndex].transform.position.z);
         if (moveLineIndex == 3) moveLineIndex = 0;
         moveLineIndex++;
+    }
 
+
+    public void ResetLinesToStartPosition()
+    {
+        for (int i = 0; i < linesArray.Length; i++)
+        {
+            linesArray[i].transform.position = setupLinesPositions[i]; 
+        }
     }
 
 }

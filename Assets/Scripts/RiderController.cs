@@ -24,6 +24,7 @@ public class RiderController : MonoBehaviour {
     public GameObject pauseButton;
     public GameObject pausePanel;
     public GameObject failedPanel;
+    public GameObject playBoard;
 
     public Text scoreText;
 
@@ -116,6 +117,8 @@ public class RiderController : MonoBehaviour {
 
     public void RestartGame()
     {
+        playBoard.GetComponent<PlayBoardGenerator>().ResetLinesToStartPosition();
+
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
         failedPanel.SetActive(false);
