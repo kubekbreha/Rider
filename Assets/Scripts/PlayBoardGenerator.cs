@@ -34,6 +34,7 @@ public class PlayBoardGenerator : MonoBehaviour {
 	}
 
 
+    //TODO: fix that. For some reason not every tile refactoring.
     private void MoveTileForward(){
         Debug.Log("move tile forward");
         Debug.Log(moveLineIndex);
