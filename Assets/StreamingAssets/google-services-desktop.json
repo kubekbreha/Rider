@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "34273780757",
+    "firebase_url": "https://rider-efabf.firebaseio.com",
+    "project_id": "rider-efabf",
+    "storage_bucket": "rider-efabf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34273780757:android:432cd917ae6807aa",
+        "android_client_info": {
+          "package_name": "com.kubekbreha.rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34273780757-a91cckphhf8da3s0pncds4ojr6vu78io.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7OBRRYE_pOKWrmspPRHEYHkYOlxz14Mc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,8 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+Assets/google-services.json
+Assets/google-services.json.meta
 
 # Visual Studio cache directory
 .vs/
