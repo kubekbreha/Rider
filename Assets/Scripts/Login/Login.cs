@@ -90,6 +90,11 @@ public class Login : MonoBehaviour {
     }
 
 
+    public void LogoutUser()
+    {
+        auth.SignOut();
+    }
+
 
     public void ChangeScene(string sceneName)
     {
