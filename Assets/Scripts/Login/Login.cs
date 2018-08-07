@@ -62,6 +62,35 @@ public class Login : MonoBehaviour {
     }
 
 
+    public void LoginUser()
+    {
+        string emailInput = email.text;
+        string passwordInput = password.text;
+
+        Credential credential =
+                    EmailAuthProvider.GetCredential(emailInput, passwordInput);
+        
+        auth.SignInWithCredentialAsync(credential).ContinueWith(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInWithCredentialAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            Firebase.Auth.FirebaseUser newUser = task.Result;
+            Debug.LogFormat("User signed in successfully: {0} ({1})",
+                newUser.DisplayName, newUser.UserId);
+        });
+
+    }
+
+
+
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
