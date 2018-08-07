@@ -30,11 +30,15 @@ public class Login : MonoBehaviour {
 
         auth = FirebaseAuth.DefaultInstance;
 	}
-	
-	void Update () {
-		
-	}
 
+    void Update()
+    {
+        Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+        if (user != null)
+        {
+            ChangeScene("Menu");
+        }
+    }
 
     public void CreateAccount()
     {
