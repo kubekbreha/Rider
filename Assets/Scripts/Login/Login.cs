@@ -1,11 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.UI;
 using UnityEngine;
 using Firebase.Auth;
+using UnityEngine.SceneManagement;
+
 
 public class Login : MonoBehaviour {
+    
+    public InputField email;
+    public InputField password;
 
     protected FirebaseAuth auth;
+
 
    	void Start () {
         //initialize Firebase SDK
@@ -24,7 +29,6 @@ public class Login : MonoBehaviour {
         });
 
         auth = FirebaseAuth.DefaultInstance;
-
 	}
 	
 	void Update () {
@@ -32,8 +36,13 @@ public class Login : MonoBehaviour {
 	}
 
 
-    private void CreateAccount(string email, string password){
-        auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
+    public void CreateAccount()
+    {
+        string emailInput = email.text;
+        string passwordInput = password.text;
+
+
+        auth.CreateUserWithEmailAndPasswordAsync(emailInput, passwordInput).ContinueWith(task => {
             if (task.IsCanceled)
             {
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
@@ -50,5 +59,11 @@ public class Login : MonoBehaviour {
             Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
         });
+    }
+
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
