@@ -3,7 +3,9 @@ using UnityEngine;
 using Firebase.Auth;
 using UnityEngine.SceneManagement;
 
-
+/*
+ * Created by Kubo Brehuv 7.8.2018
+ */
 public class Login : MonoBehaviour {
     
     public InputField email;

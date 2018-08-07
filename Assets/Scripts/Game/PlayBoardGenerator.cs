@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Create by Kubo Brehuv 1.8.2018
+ * Created by Kubo Brehuv 1.8.2018
  */
 public class PlayBoardGenerator : MonoBehaviour {
     

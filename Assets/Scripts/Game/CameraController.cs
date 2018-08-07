@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 /*
- * Create by Kubo Brehuv 31.7.2018
+ * Created by Kubo Brehuv 31.7.2018
  */
 public class CameraController : MonoBehaviour {
 
